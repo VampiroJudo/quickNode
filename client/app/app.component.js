@@ -10,13 +10,13 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            templateUrl: '<h1>My First Angular App</h1>'
-        })
-    ], AppComponent);
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'my-app',
+        templateUrl: '<h1>My First Angular App</h1>'
+    })
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

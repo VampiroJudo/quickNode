@@ -69,7 +69,7 @@ router.put('/task/:id', function(req, res, next) {
 		res.json({
 			"error": "Bad Data"
 		});
-	} esle {
+	} else {
 		db.tasks.update({_id:mongojs.ObjectId(req.params.id)},updTask, {},function(err, task) {
 		if(err) {
 			res.send(err);

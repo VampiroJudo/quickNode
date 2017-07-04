@@ -3,30 +3,31 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://JohnC:rednef1500@ds143362.mlab.com:43362/quicknode_john', ['tasks']);
 
+//Get All Tasks
 router.get('/tasks', function(req, res, next) {
 	db.tasks.find(function(err, tasks) {
 		if(err) {
 			res.send(err);
 		}
 		res.json(tasks);
-	})
+	});
 });
 
 //Get Single Task
 router.get('/task/:id', function(req, res, next) {
-	db.tasks.findOne({_id:mongojs.ObjectId(req.params.id)},function(err, task) {
+	db.tasks.findOne({_id: mongojs.ObjectId(req.params.id)},function(err, task) {
 		if(err) {
 			res.send(err);
 		}
 		res.json(task);
-	})
+	});
 });
 
 //Save Task
 
 router.post('/task', function(req, res, next) {
 	var task = req.body;
-	if(!task.title || (task.isDone + '')) {
+	if(!task.title || !(task.isDone + '')) {
 		res.status(400);
 		res.json ({
 			"error" : "Bad Data"
@@ -43,12 +44,12 @@ router.post('/task', function(req, res, next) {
 
 //Delete Task
 router.delete('/task/:id', function(req, res, next) {
-	db.tasks.remove({_id:mongojs.ObjectId(req.params.id)},function(err, task) {
+	db.tasks.remove({_id: mongojs.ObjectId(req.params.id)},function(err, task) {
 		if(err) {
 			res.send(err);
 		}
 		res.json(task);
-	})
+	});
 });
 
 //Update Task
@@ -70,7 +71,7 @@ router.put('/task/:id', function(req, res, next) {
 			"error": "Bad Data"
 		});
 	} else {
-		db.tasks.update({_id:mongojs.ObjectId(req.params.id)},updTask, {},function(err, task) {
+		db.tasks.update({_id: mongojs.ObjectId(req.params.id)},updTask, {},function(err, task) {
 		if(err) {
 			res.send(err);
 		}
@@ -78,8 +79,6 @@ router.put('/task/:id', function(req, res, next) {
 	});
 
 	}
-
-	
 });
 
 module.exports = router;

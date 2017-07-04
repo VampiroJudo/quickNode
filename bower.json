@@ -1,0 +1,21 @@
+{
+  "name": "quicknode",
+  "description": "simple task manager",
+  "main": "server.js",
+  "authors": [
+    "John <johnconley507@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/VampiroJudo/quickNode",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

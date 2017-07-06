@@ -10,11 +10,26 @@ import { Task } from '../../../Task';
 
 export class TasksComponent {
 	tasks: Task[];
+	title: string;
 
 	constructor(private taskService:TaskService) {
 		this.taskService.getTasks()
 			.subscribe(tasks => {
 				this.tasks = tasks;
+			});
+	}
+
+	addTask(event) {
+		event.preventDefault();
+		var newTask = {
+			title:this.title;
+			isDone: false
+		}
+
+		this.taskService.addTask(newTask)
+			.subscribe(task => {
+				this.task.push(task);
+				this.title = '';
 			});
 	}
 }

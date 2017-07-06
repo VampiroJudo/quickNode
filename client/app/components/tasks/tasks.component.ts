@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
+import { Task } from '../../../Task';
 
 @Component({
 	moduleId: module.id,
@@ -8,7 +9,12 @@ import { TaskService } from '../../services/task.service';
 })
 
 export class TasksComponent {
-	constructor(private taskService:TaskService) {
+	tasks: Task[];
 
+	constructor(private taskService:TaskService) {
+		this.taskService.getTasks()
+			.subscribe(tasks => {
+				this.tasks = tasks;
+			});
 	}
 }
